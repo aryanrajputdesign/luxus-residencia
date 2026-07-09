@@ -690,3 +690,12 @@ opacity:1;
 html{
     scroll-padding-top:90px;
 }
+
+.contact a{
+color:#ffffff;
+text-decoration:none;
+}
+
+.contact a:hover{
+color:#d4af37;
+}
