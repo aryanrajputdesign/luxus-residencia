@@ -18,3 +18,13 @@ const nav = document.querySelector("nav");
 menu.addEventListener("click", function () {
 nav.classList.toggle("active");
 });
+
+window.addEventListener("load", function(){
+
+setTimeout(function(){
+
+document.getElementById("loader").classList.add("hide");
+
+},1200);
+
+});
