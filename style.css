@@ -147,27 +147,34 @@ flex-wrap:wrap;
 }
 
 .btn{
-background:#d4af37;
+background:linear-gradient(135deg,#d4af37,#f7d774);
 color:#000;
-padding:16px 34px;
+padding:16px 36px;
 border-radius:50px;
-font-weight:600;
-transition:.3s;
+font-weight:700;
+display:inline-block;
+text-decoration:none;
+box-shadow:0 10px 25px rgba(212,175,55,.35);
+transition:all .35s ease;
 }
 
 .btn:hover{
-transform:translateY(-5px);
+transform:translateY(-6px) scale(1.05);
+box-shadow:0 18px 35px rgba(212,175,55,.55);
 }
 
 .outline{
 background:transparent;
 color:#fff;
 border:2px solid #d4af37;
+box-shadow:none;
 }
 
 .outline:hover{
 background:#d4af37;
 color:#000;
+transform:translateY(-6px) scale(1.05);
+box-shadow:0 18px 35px rgba(212,175,55,.45);
 }
 
 /* ===========================
