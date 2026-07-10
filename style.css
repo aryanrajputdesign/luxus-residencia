@@ -770,3 +770,41 @@ text-align:center;
 }
 
 }
+
+.hero-content h4{
+animation:fadeDown 1s ease;
+}
+
+.hero-content h1{
+animation:fadeUp 1.2s ease;
+}
+
+.hero-content p{
+animation:fadeUp 1.4s ease;
+}
+
+.hero-buttons{
+animation:fadeUp 1.6s ease;
+}
+
+@keyframes fadeDown{
+from{
+opacity:0;
+transform:translateY(-40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
