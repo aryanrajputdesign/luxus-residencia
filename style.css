@@ -699,3 +699,28 @@ text-decoration:none;
 .contact a:hover{
 color:#d4af37;
 }
+
+/* WhatsApp Floating Button */
+
+.whatsapp{
+position:fixed;
+bottom:25px;
+right:25px;
+width:65px;
+height:65px;
+background:#25D366;
+color:#fff;
+font-size:32px;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:50%;
+box-shadow:0 10px 25px rgba(0,0,0,.35);
+z-index:9999;
+transition:.3s;
+}
+
+.whatsapp:hover{
+transform:scale(1.12);
+box-shadow:0 15px 35px rgba(37,211,102,.45);
+}
