@@ -11,6 +11,8 @@
 
 <link rel="stylesheet" href="style.css">
 
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -58,7 +60,7 @@ Book Now
 
 <div class="overlay"></div>
 
-<div class="hero-content">
+<div class="hero-content" data-aos="zoom-in">
 
 <h4>WELCOME TO</h4>
 
@@ -90,7 +92,7 @@ View Gallery
 
 </section>
 
-<section id="about" class="about">
+<section id="about" class="about" data-aos="fade-up">
 
 <div class="container">
 
@@ -459,6 +461,15 @@ CEO: Zain Rajput
 </footer>
 
 <script src="script.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({
+duration:1000,
+once:true
+});
+</script>
 
 </body>
 
