@@ -201,9 +201,10 @@ document.querySelectorAll(".play-video").forEach(button => {
         popupVideo.pause();
         popupVideo.currentTime = 0;
 
-        popupVideo.src = this.dataset.video;
+        popupVideo.querySelector("source").src = this.dataset.video;
+     popupVideo.load();
 
-        popupVideo.load();
+        
 
         videoPopup.classList.add("active");
 
