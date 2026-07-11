@@ -158,3 +158,5 @@ videoPopup.addEventListener("click", (e) => {
         videoPopup.classList.remove("active");
     }
 });
+
+console.log("Video popup working");
