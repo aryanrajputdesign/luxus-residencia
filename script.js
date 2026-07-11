@@ -253,3 +253,5 @@ if (videoPopup) {
 
 }
 
+console.log("All scripts loaded successfully");
+
