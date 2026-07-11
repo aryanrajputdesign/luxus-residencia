@@ -100,56 +100,7 @@ dots.forEach((dot,index)=>{
 
 setInterval(nextSlide,5000);
 
-// VIDEO POPUP
 
-const popup = document.getElementById("videoPopup");
-const video = document.getElementById("popupVideo");
-const playButtons = document.querySelectorAll(".play-video");
-const closeVideo = document.querySelector(".close-video");
-
-playButtons.forEach(button => {
-
-button.addEventListener("click", function(e){
-
-e.preventDefault();
-
-video.src = this.dataset.video;
-
-popup.classList.add("active");
-
-video.play();
-
-});
-
-});
-
-closeVideo.addEventListener("click", function(){
-
-popup.classList.remove("active");
-
-video.pause();
-
-video.currentTime = 0;
-
-video.src = "";
-
-});
-
-popup.addEventListener("click", function(e){
-
-if(e.target === popup){
-
-popup.classList.remove("active");
-
-video.pause();
-
-video.currentTime = 0;
-
-video.src = "";
-
-}
-
-});
 
 /* ===== Premium Image Lightbox ===== */
 
