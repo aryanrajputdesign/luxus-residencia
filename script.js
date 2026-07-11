@@ -174,3 +174,36 @@ lightbox.addEventListener("click", (e) => {
         lightbox.classList.remove("active");
     }
 });
+
+/* ===== Video Popup ===== */
+
+const videoPopup = document.getElementById("videoPopup");
+const popupVideo = document.getElementById("popupVideo");
+const videoSource = popupVideo.querySelector("source");
+const closeVideo = document.querySelector(".close-video");
+
+document.querySelectorAll(".play-video").forEach(btn => {
+    btn.addEventListener("click", function(e){
+        e.preventDefault();
+
+        videoSource.src = this.dataset.video;
+        popupVideo.load();
+
+        videoPopup.classList.add("active");
+        popupVideo.play();
+    });
+});
+
+closeVideo.addEventListener("click", () => {
+    popupVideo.pause();
+    popupVideo.currentTime = 0;
+    videoPopup.classList.remove("active");
+});
+
+videoPopup.addEventListener("click", (e) => {
+    if(e.target === videoPopup){
+        popupVideo.pause();
+        popupVideo.currentTime = 0;
+        videoPopup.classList.remove("active");
+    }
+});
