@@ -199,16 +199,16 @@ document.querySelectorAll(".play-video").forEach(button => {
         }
 
         popupVideo.pause();
-        popupVideo.currentTime = 0;
+popupVideo.currentTime = 0;
 
-        popupVideo.querySelector("source").src = this.dataset.video;
-     popupVideo.load();
+const source = popupVideo.querySelector("source");
+source.src = this.dataset.video;
 
-        
+popupVideo.load();
 
-        videoPopup.classList.add("active");
+videoPopup.classList.add("active");
 
-        popupVideo.play();
+popupVideo.play().catch(err => console.log(err));
 
     });
 
@@ -242,7 +242,7 @@ if (videoPopup) {
 
             popupVideo.currentTime = 0;
 
-            popupVideo.removeAttribute("src");
+            popupVideo.querySelector("source").src = "";
 
             popupVideo.load();
 
