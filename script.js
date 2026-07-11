@@ -253,6 +253,3 @@ if (videoPopup) {
 
 }
 
-console.log("All scripts loaded successfully");
-
-alert("JS Working");
