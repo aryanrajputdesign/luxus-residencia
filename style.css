@@ -1164,3 +1164,42 @@ cursor:pointer;
     cursor:pointer;
     font-weight:bold;
 }
+
+/* ===== Video Popup ===== */
+
+.video-popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.85);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.video-popup.active{
+    display:flex;
+}
+
+.video-box{
+    position:relative;
+    width:90%;
+    max-width:900px;
+}
+
+.video-box video{
+    width:100%;
+    border-radius:12px;
+}
+
+.close-video{
+    position:absolute;
+    top:-40px;
+    right:0;
+    font-size:40px;
+    color:#fff;
+    cursor:pointer;
+}
