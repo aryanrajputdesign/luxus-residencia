@@ -222,7 +222,7 @@ if (closeVideo) {
 
         popupVideo.currentTime = 0;
 
-        popupVideo.removeAttribute("src");
+        popupVideo.querySelector("source").src = "";
 
         popupVideo.load();
 
