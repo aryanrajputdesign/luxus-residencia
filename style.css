@@ -1270,3 +1270,7 @@ cursor:pointer;
     color:#fff;
     cursor:pointer;
 }
+
+.play-video {
+    display: none !important;
+}
