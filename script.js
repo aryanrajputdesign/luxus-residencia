@@ -1,60 +1,45 @@
 console.log("Luxus Residencia Loaded");
 
-// ================= HEADER =================
-
+// HEADER
 window.addEventListener("scroll", () => {
     const header = document.querySelector("header");
-
     if (header) {
-        if (window.scrollY > 80) {
-            header.classList.add("scrolled");
-        } else {
-            header.classList.remove("scrolled");
-        }
+        header.classList.toggle("scrolled", window.scrollY > 80);
     }
 });
 
-// ================= MOBILE MENU =================
-
+// MOBILE MENU
 const menu = document.querySelector(".menu-toggle");
 const nav = document.querySelector("nav");
 
 if (menu && nav) {
-    menu.addEventListener("click", () => {
-        nav.classList.toggle("active");
-    });
+    menu.onclick = () => nav.classList.toggle("active");
 }
 
-// ================= LOADER =================
-
+// LOADER
 window.addEventListener("load", () => {
-
     const loader = document.getElementById("loader");
-
     if (loader) {
-        setTimeout(() => {
-            loader.classList.add("hide");
-        }, 1200);
+        setTimeout(() => loader.classList.add("hide"), 1200);
     }
-
 });
 
-// ================= COUNTERS =================
-
+// COUNTERS
 document.querySelectorAll(".counter").forEach(counter => {
 
-    function updateCounter() {
+    const target = +counter.dataset.target;
 
-        const target = Number(counter.dataset.target);
-        const current = Number(counter.innerText);
+    const update = () => {
 
-        const increment = Math.ceil(target / 100);
+        let value = +counter.innerText;
 
-        if (current < target) {
+        const inc = Math.ceil(target / 100);
 
-            counter.innerText = current + increment;
+        if (value < target) {
 
-            setTimeout(updateCounter, 20);
+            counter.innerText = value + inc;
+
+            setTimeout(update,20);
 
         } else {
 
@@ -62,9 +47,9 @@ document.querySelectorAll(".counter").forEach(counter => {
 
         }
 
-    }
+    };
 
-    updateCounter();
+    update();
 
 });
 
@@ -78,21 +63,21 @@ const nextBtn = document.getElementById("nextSlide");
 
 let currentSlide = 0;
 
-function showSlide(index) {
+function showSlide(index){
 
     slides.forEach(slide => slide.classList.remove("active"));
     dots.forEach(dot => dot.classList.remove("active"));
 
-    if (slides[index]) slides[index].classList.add("active");
-    if (dots[index]) dots[index].classList.add("active");
+    if(slides[index]) slides[index].classList.add("active");
+    if(dots[index]) dots[index].classList.add("active");
 
 }
 
-function nextSlide() {
+function nextSlide(){
 
     currentSlide++;
 
-    if (currentSlide >= slides.length) {
+    if(currentSlide >= slides.length){
         currentSlide = 0;
     }
 
@@ -100,11 +85,11 @@ function nextSlide() {
 
 }
 
-function prevSlide() {
+function prevSlide(){
 
     currentSlide--;
 
-    if (currentSlide < 0) {
+    if(currentSlide < 0){
         currentSlide = slides.length - 1;
     }
 
@@ -112,29 +97,25 @@ function prevSlide() {
 
 }
 
-if (nextBtn) {
-    nextBtn.addEventListener("click", nextSlide);
-}
+if(nextBtn) nextBtn.onclick = nextSlide;
 
-if (prevBtn) {
-    prevBtn.addEventListener("click", prevSlide);
-}
+if(prevBtn) prevBtn.onclick = prevSlide;
 
-dots.forEach((dot, index) => {
+dots.forEach((dot,index)=>{
 
-    dot.addEventListener("click", () => {
+    dot.onclick = ()=>{
 
         currentSlide = index;
 
         showSlide(currentSlide);
 
-    });
+    };
 
 });
 
-if (slides.length > 0) {
+if(slides.length){
 
-    setInterval(nextSlide, 5000);
+    setInterval(nextSlide,5000);
 
 }
 
@@ -159,17 +140,17 @@ document.querySelectorAll(".gallery-grid img").forEach(img => {
 
 if (closeLightbox) {
 
-    closeLightbox.addEventListener("click", () => {
+    closeLightbox.onclick = () => {
 
         lightbox.classList.remove("active");
 
-    });
+    };
 
 }
 
 if (lightbox) {
 
-    lightbox.addEventListener("click", (e) => {
+    lightbox.onclick = (e) => {
 
         if (e.target === lightbox) {
 
@@ -177,7 +158,7 @@ if (lightbox) {
 
         }
 
-    });
+    };
 
 }
 
@@ -187,70 +168,67 @@ const videoPopup = document.getElementById("videoPopup");
 const popupVideo = document.getElementById("popupVideo");
 const closeVideo = document.querySelector(".close-video");
 
-document.querySelectorAll(".play-video").forEach(button => {
+document.querySelectorAll(".play-video").forEach(btn => {
 
-    button.addEventListener("click", function(e){
+    btn.addEventListener("click", function(e){
 
         e.preventDefault();
 
-        if (!videoPopup || !popupVideo) {
-            console.error("Video popup not found");
-            return;
-        }
-
         popupVideo.pause();
-popupVideo.currentTime = 0;
+        popupVideo.currentTime = 0;
 
-popupVideo.src = this.dataset.video;
-popupVideo.load();
+        popupVideo.src = this.getAttribute("data-video");
 
-videoPopup.classList.add("active");
+        videoPopup.classList.add("active");
 
-popupVideo.play().catch(err => console.log(err));
+        popupVideo.load();
+
+        popupVideo.play().catch(()=>{});
 
     });
 
 });
 
-if (closeVideo) {
+function closePopup(){
 
-    closeVideo.addEventListener("click", () => {
+    popupVideo.pause();
+    popupVideo.currentTime = 0;
+    popupVideo.removeAttribute("src");
+    popupVideo.load();
 
-        popupVideo.pause();
-
-        popupVideo.currentTime = 0;
-
-        popupVideo.removeAttribute("src");
-
-        popupVideo.load();
-
-        videoPopup.classList.remove("active");
-
-    });
+    videoPopup.classList.remove("active");
 
 }
 
-if (videoPopup) {
+if(closeVideo){
+    closeVideo.onclick = closePopup;
+}
 
-    videoPopup.addEventListener("click", (e) => {
+if(videoPopup){
 
-        if (e.target === videoPopup) {
+    videoPopup.onclick = function(e){
 
-            popupVideo.pause();
+        if(e.target === videoPopup){
 
-            popupVideo.currentTime = 0;
-
-            popupVideo.querySelector("source").src = "";
-
-            popupVideo.load();
-
-            videoPopup.classList.remove("active");
+            closePopup();
 
         }
 
+    };
+
+}
+
+// ================= AOS =================
+
+if (typeof AOS !== "undefined") {
+
+    AOS.init({
+        duration: 1000,
+        once: true
     });
 
 }
 
-console.log("All scripts loaded successfully");
+// ================= END =================
 
+console.log("Luxus Residencia JS Loaded Successfully");
