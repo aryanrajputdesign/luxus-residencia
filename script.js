@@ -163,6 +163,59 @@ if (lightbox) {
 }
 
 
+// ================= VIDEO POPUP =================
+
+const videoPopup = document.getElementById("videoPopup");
+const popupVideo = document.getElementById("popupVideo");
+const closeVideo = document.querySelector(".close-video");
+
+document.querySelectorAll(".play-video").forEach(btn => {
+
+    btn.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        if(!videoPopup || !popupVideo) return;
+
+        popupVideo.pause();
+        popupVideo.currentTime = 0;
+
+        popupVideo.src = this.dataset.video;
+
+        videoPopup.classList.add("active");
+
+        popupVideo.load();
+
+        popupVideo.play().catch(()=>{});
+
+    });
+
+});
+
+function closePopup(){
+
+    popupVideo.pause();
+    popupVideo.currentTime = 0;
+    popupVideo.removeAttribute("src");
+    popupVideo.load();
+
+    videoPopup.classList.remove("active");
+
+}
+
+if(closeVideo){
+    closeVideo.onclick = closePopup;
+}
+
+if(videoPopup){
+    videoPopup.onclick = function(e){
+        if(e.target === videoPopup){
+            closePopup();
+        }
+    };
+}
+
+
 
 
 
