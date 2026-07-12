@@ -201,9 +201,7 @@ document.querySelectorAll(".play-video").forEach(button => {
         popupVideo.pause();
 popupVideo.currentTime = 0;
 
-const source = popupVideo.querySelector("source");
-source.src = this.dataset.video;
-
+popupVideo.src = this.dataset.video;
 popupVideo.load();
 
 videoPopup.classList.add("active");
@@ -222,7 +220,7 @@ if (closeVideo) {
 
         popupVideo.currentTime = 0;
 
-        popupVideo.querySelector("source").src = "";
+        popupVideo.removeAttribute("src");
 
         popupVideo.load();
 
