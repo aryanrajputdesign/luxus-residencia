@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aryanrajputdesign.github.io/luxus-residencia/sitemap.xml
